@@ -3,14 +3,13 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:yousef/data/demodata.dart';
 import 'package:yousef/models/mainmodel.dart';
 import 'package:yousef/screens/itemscreen.dart';
-import 'package:yousef/screens/products.dart';
 
-class CategoryPage extends StatefulWidget {
+class CategoryItemPage extends StatefulWidget {
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _CategoryItemPageState createState() => _CategoryItemPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _CategoryItemPageState extends State<CategoryItemPage> {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant(
@@ -20,7 +19,7 @@ class _CategoryPageState extends State<CategoryPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          title: Text('Category',
+          title: Text('Category items',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
@@ -48,8 +47,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 children: [
                   InkWell(
                     onTap: (){
-                      
-                      Navigator.push(context, MaterialPageRoute(builder: (_){return CategoryItemPage();}));
+                      Navigator.push(context, MaterialPageRoute(builder: (_){return ItemScreen();}));
                     },
                     child: Container(
                       alignment: Alignment.topRight,
@@ -63,7 +61,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           borderRadius: BorderRadius.circular(20.0),
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(controller.allCategories[index].categoryImage))),
+                              image: NetworkImage(controller.allCategories[index].Product[index].itemimage))),
                       // child: Image(image: NetworkImage('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'),)
                     ),
                   ),

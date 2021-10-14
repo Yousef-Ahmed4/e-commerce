@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:yousef/models/mainmodel.dart';
 import 'package:yousef/screens/homepage.dart';
+
 
 
 
@@ -7,11 +10,6 @@ import 'package:yousef/screens/homepage.dart';
 void main() {
   runApp(MyApp());
 }
-
-
-
-
-
 class MyApp extends StatefulWidget {
  
 
@@ -22,8 +20,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
+    return ScopedModel(
+      model: MainModel(),
+      child: ScopedModelDescendant(
+        builder: (context,child,MainModel controller) {
+          return  MaterialApp(
+          home: HomePage(controller),
+        );
+        },
+        
+      ),
     );
   }
 }

@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:yousef/data/demodata.dart';
+import 'package:yousef/models/mainmodel.dart';
 import 'package:yousef/screens/category.dart';
 import 'package:yousef/screens/itemscreen.dart';
 import 'package:yousef/theme/theme.dart';
+import 'package:scoped_model/scoped_model.dart';
+
 
 class HomePage extends StatefulWidget {
+
+   final MainModel controller;
+
+  HomePage(this.controller);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
+
+  
 class _HomePageState extends State<HomePage> {
+    @override
+   void initState() {
+    widget.controller.gitData();
+    super.initState();
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +55,14 @@ class _HomePageState extends State<HomePage> {
               Container(
                 width: 300,height: 50,
                 child: TextField(
+
                   
                     decoration: InputDecoration(
+                     // focusedBorder: ,
+                     
+
+                      prefixIcon: Icon(Icons.search,color: Colors.black,),
+                      hintText: 'search produce',
 
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))
                     ),
@@ -61,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                   image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
-                          'https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'))),
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK6vwmxBQFQXyaNqp2reRwUy7jKlEjL8gRtA&usqp=CAU'))),
               // child: Image(image: NetworkImage('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'),),
             ),
           ),

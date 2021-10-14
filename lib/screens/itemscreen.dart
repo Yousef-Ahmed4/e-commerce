@@ -9,7 +9,11 @@ class _ItemScreenState extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black, size: 30.0),
+         backgroundColor: Colors.white,
+        elevation: 0.0,
+      ),
       body: ListView(
         children: [
           Container(
@@ -60,56 +64,65 @@ class _ItemScreenState extends State<ItemScreen> {
             title: Text('corner sofa, 2-seat',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold)),
+                    fontSize: 17.0,
+                    )),
             subtitle: Text('classic traditional',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold)),
-            trailing: Text('\$1650,',
+            trailing: Text('\$1650',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold)),
           ),
+          Text('   D2300-2-3-2',style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17.0,
+                    )),
           Text(
-            'sdfugvjdfgvhxckljbnviudfojgmnjkxchvnsdhvndfjkvhcnvbjdfidfjgjvnxklcvujpsklfnhciksdjfmnkcxlv jsmkfniox;vn o',
+            '\nsdfugvjdfgvhxckljbnviudfojgmnjkxchvnsdhvndfjkvhcnvbjdfidfjg  jvnxklcvujpsklfnhciksdjfmnkcxlv jsmkfniox;v5165sadfasfjofjsn o',
             softWrap: true,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 15),
           ),
         ],
       ),
       bottomSheet: Container(
         width: MediaQuery.of(context).size.width,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.black, width: 1.5)
-                  ),
-                  fixedSize: Size(100, 50),
-                  backgroundColor: Colors.white),
-                child: IconButton(
-                    icon: Icon(Icons.favorite_border,color:Colors.black),
-                    onPressed: (){},
-                  ),
-                  
-                        ),
-            TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  fixedSize: Size(MediaQuery.of(context).size.width/1.35, 50),
-                  backgroundColor: Colors.blueAccent ),
-                child: Text('add to cart',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold)))
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Color(0xfffe7334) , width: 1.6 )
+                    ),
+                    fixedSize: Size(100, 50),
+                    backgroundColor: Colors.white),
+                  child: IconButton(
+                      icon: Icon(Icons.favorite_border,color:Color(0xfffe7334) ),
+                      onPressed: (){},
+                    ),
+                    
+                          ),
+               SizedBox(width: 13,),           
+              TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    fixedSize: Size(MediaQuery.of(context).size.width/1.5, 50),
+                    backgroundColor: Color(0xfffe7334) ),
+                  child: Text('add to cart',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold)))
+            ],
+          ),
         ),
       ),
     );
