@@ -3,14 +3,13 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:yousef/data/demodata.dart';
 import 'package:yousef/models/mainmodel.dart';
 import 'package:yousef/screens/itemscreen.dart';
-import 'package:yousef/theme/icons.dart';
 
-class CategoryItemPage extends StatefulWidget {
+class CartScreen extends StatefulWidget {
   @override
-  _CategoryItemPageState createState() => _CategoryItemPageState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _CategoryItemPageState extends State<CategoryItemPage> {
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant(
@@ -27,7 +26,7 @@ class _CategoryItemPageState extends State<CategoryItemPage> {
                   fontWeight: FontWeight.bold)),
           centerTitle: true,
           actions: [
-            iconbag(context)
+            
           ],
           iconTheme: IconThemeData(color: Colors.black, size: 30.0),
         ),
@@ -38,13 +37,13 @@ class _CategoryItemPageState extends State<CategoryItemPage> {
               childAspectRatio:.75
             ),
             scrollDirection: Axis.vertical,
-            itemCount: controller.selectedcategory!.Product.length,
+            itemCount: controller.cart.length,
             itemBuilder: (context, index) {
               return Column(
                 children: [
                   InkWell(
                     onTap: (){
-                      controller.selectproduct(controller.selectedcategory!.Product[index].id);
+                      controller.selectproduct(controller.cart[index].id);
                       Navigator.push(context, MaterialPageRoute(builder: (_){return ItemScreen();}));
                     },
                     child: Container(
@@ -52,21 +51,24 @@ class _CategoryItemPageState extends State<CategoryItemPage> {
                       height: 200, width: 200,
                       margin: EdgeInsets.all(5),
                       child: IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        onPressed: (){},
+                        icon: Icon(Icons.close),
+                        onPressed: (){
+                        controller.selectproduct(controller.cart[index].id);
+                          controller.removeFromCart(controller.selectedproduct!);
+                        },
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage(controller.selectedcategory!.Product[index].itemimage))),
+                              image: NetworkImage(controller.cart[index].itemimage))),
                       // child: Image(image: NetworkImage('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'),)
                     ),
                   ),
                  // Text(CategoryData[index]['category name']),
-                   Text(controller.selectedcategory!.Product[index].producteName),
+                   Text(controller.cart[index].producteName),
                  // Text(CategoryData[index]['items number']),
-                  Text(controller.selectedcategory!.Product[index].itemprice)
+                  Text(controller.cart[index].itemprice)
                 ],
               );
             },

@@ -4,6 +4,7 @@ import 'package:yousef/data/demodata.dart';
 import 'package:yousef/models/mainmodel.dart';
 import 'package:yousef/screens/itemscreen.dart';
 import 'package:yousef/screens/products.dart';
+import 'package:yousef/theme/icons.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -27,11 +28,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   fontWeight: FontWeight.bold)),
           centerTitle: true,
           actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_bag),
-              color: Colors.black,
-              onPressed: () {},
-            )
+           iconbag(context)
           ],
           iconTheme: IconThemeData(color: Colors.black, size: 30.0),
         ),
@@ -48,7 +45,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 children: [
                   InkWell(
                     onTap: (){
-                      
+                      controller.selectcategory(controller.allCategories[index].id);
                       Navigator.push(context, MaterialPageRoute(builder: (_){return CategoryItemPage();}));
                     },
                     child: Container(
@@ -64,7 +61,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           image: DecorationImage(
                               fit: BoxFit.fill,
                               image: NetworkImage(controller.allCategories[index].categoryImage))),
-                      // child: Image(image: NetworkImage('https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400'),)
+                      
                     ),
                   ),
                  // Text(CategoryData[index]['category name']),

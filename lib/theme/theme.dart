@@ -14,3 +14,4 @@ TextStyle primaryColorTextStyle = TextStyle(color: mainColor, fontSize: 15.0, fo
 TextStyle primaryTextStyle = TextStyle(color: primaryColor, fontSize: 20.0, fontWeight: FontWeight.bold);
 
 TextStyle secondaryTextStyle = TextStyle(color: secondaryColor, fontSize: 17.0, fontWeight: FontWeight.bold);
+
